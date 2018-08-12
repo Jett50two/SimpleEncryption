@@ -1,7 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigInteger;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -9,14 +8,15 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class encryptionMain {
-	private static final JFrame frame = new JFrame();  
-	private static JPanel panel = new JPanel();    
-	private static JTextField nameField = new JTextField(20);    
+	private static final JFrame frame = new JFrame();
+	private static JPanel panel = new JPanel();
+	private static JTextField nameField = new JTextField(20);
 	private static JButton button1 = new JButton();
 	private static JTextArea inputValue = new JTextArea();
+	// Encryption Text Areas
 	private static JTextArea encryptValue = new JTextArea();
 	private static JTextArea fullEncryptValue = new JTextArea();
-
+	// Decryption TextAres
 	private static JTextArea decryptValue = new JTextArea();
 	private static JTextArea outputValue = new JTextArea();
 	
@@ -32,7 +32,7 @@ public class encryptionMain {
 	/**
 	 * Display function for setting up the button, text field and text areas.
 	 */
-	public static void display(){
+	private static void display(){
 		// Set up the panel to be used in the frame.
 		frame.add(panel);
 		
@@ -54,7 +54,7 @@ public class encryptionMain {
 		});
 	}
 	
-	public static void buttonPressed() {
+	private static void buttonPressed() {
 		// original value
 		inputValue.setText("Original Text: " + nameField.getText()); 
 		inputValue.setVisible(true);
@@ -79,7 +79,7 @@ public class encryptionMain {
 	/**
 	 * Set up the values for the textArea's.
 	 */
-	public static void setTextAreas(){
+	private static void setTextAreas(){
 		panel.add(inputValue);
 		// setBounds isn't really the best choice for this, but it works for the option of a quick UI. 
 		inputValue.setBounds(0, 0, 500, 5);
@@ -120,7 +120,7 @@ public class encryptionMain {
 	 * @param text = passed string value
 	 * @return the text as numbers
 	 */
-	public static String encryptText(String text){
+	private static String encryptText(String text){
 		String wordsToNum = "";
 		// check each character in the text
 		for (int index = 0; index < text.length(); index++) {
@@ -137,9 +137,9 @@ public class encryptionMain {
 	 * @param letter = the letter from part of the string that was inputed originally
 	 * @return the number that is related to the letter.
 	 */
-	public static String changeToNumber (char letter){
+	private static String changeToNumber (char letter){
 		String number = null;
-		if        (letter == 'A'){
+		if (letter == 'A'){
 			number = "10";
 		} else if (letter == 'a'){
 			number = "11";
@@ -276,7 +276,7 @@ public class encryptionMain {
 	 * @param text = numbers of the encrypted text.
 	 * @return the full encryption.
 	 */
-	public static String fullEncryptEquation (String text){
+	private static String fullEncryptEquation (String text){
 		BigInteger value = new BigInteger("0");
 		try{
 			BigInteger number = new BigInteger(text);
@@ -296,7 +296,7 @@ public class encryptionMain {
 	 * @param text
 	 * @return
 	 */
-	public static String decryptText(String text){
+	private static String decryptText(String text){
 		String numToWords = "";
 		int num = 0;
 		// check each character in the text
@@ -321,7 +321,7 @@ public class encryptionMain {
 	 * @param num
 	 * @return
 	 */
-	public static char changeToChar(int num){
+	private static char changeToChar(int num){
 		char letter = ' ';
 		// Cut the number if statements in half to make the calculations a little quicker.
 		if (num >= 10 && num <= 40){
@@ -477,7 +477,7 @@ public class encryptionMain {
 	 * @param text
 	 * @return
 	 */
-	public static String fullDencryptEquation(String text){
+	private static String fullDencryptEquation(String text){
 		BigInteger value = new BigInteger("0");
 		try{
 			BigInteger number = new BigInteger(text);
